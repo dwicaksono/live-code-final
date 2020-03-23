@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const { Model } = sequelize.Sequelize
   class Report extends Model { }
   Report.init({
-    report: {
+    cases: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {

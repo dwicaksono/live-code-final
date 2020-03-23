@@ -16,11 +16,15 @@ class ControllerReport {
   }
 
   static postReport(req, res, next) {
-    let { report, CountryId } = req.body
+    let { cases, CountryId } = req.body
     if (req.headers.token) {
       Report.create({ report, CountryId })
         .then(result => {
+          return Country.update(cases)
           res.status(200).json(result)
+        })
+        .then(resultCountry => {
+          // return Country.
         })
     } else {
       throw createError(404, "NOT FOUND")
