@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Login v-if="!isLogin" />
+    <dashboard v-if="isLogin" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Login from "../components/Login.vue";
+import Dashboard from "../components/Dashboard.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
+  data() {
+    return {
+      isLogin: false
+    };
+  },
+  mounted() {
+    if (localStorage.getItem("token")) {
+      this.isLogin = true;
+    } else {
+      this.isLogin = false;
+    }
+  },
   components: {
-    HelloWorld
+    Login,
+    Dashboard
   }
-}
+};
 </script>

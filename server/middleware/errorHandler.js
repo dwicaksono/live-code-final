@@ -13,6 +13,9 @@ module.exports = (err, req, res, next) => {
   else if (err.name == 'NotFoundError') {
     res.status(400).json(err.message)
   }
+  else if (err.name == 'JsonWebTokenError') {
+    res.status(404).json("NOT FOUND")
+  }
   else {
     res.status(500).json('500 internal server error')
   }
