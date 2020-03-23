@@ -23,10 +23,10 @@
       <button type="submit" class="btn btn-primary">Report</button>
     </form>
     <br />
-    <div class="card">
-      <div class="card-body">test</div>
-      {{reports.name}}
-      <div class="card-body">This is some text within a card body.</div>
+    <div class="card" v-for="report in reports" :key="report.id">
+      <div class="card-body">Country : {{report.Country.name}}</div>
+
+      <div class="card-body">cases: {{report.Country.cases}}</div>
     </div>
   </div>
 </template>
